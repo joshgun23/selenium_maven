@@ -90,8 +90,9 @@ driver.findElement(By.xpath("//label[@class=\"ft-homepage-search__tabs__used-car
 
        // Step 13 On the left menu, click on Coupe AWD checkbox and verify that all results on the page contains “Coupe AWD"
 
-        WebElement coupeAwdCheckbox = driver.findElement(By.xpath("//h4[@class='vO42pn']"));
-        coupeAwdCheckbox.click();
+           Thread.sleep(3000);
+        driver.findElement(By.xpath("//fieldset[5]//ul[1]//li[1]//label[1]//p[1]")).click();
+
 
         List<WebElement> resultTitleElements = driver.findElements(By.xpath("//a[@data-cg-ft='car-blade-link'][not(contains(@href, 'FEATURED'))]//h4[contains(@class, 'cg-listingDetail-model')]"));
         for (WebElement resultTitleElement : resultTitleElements) {
@@ -108,6 +109,7 @@ driver.findElement(By.xpath("//label[@class=\"ft-homepage-search__tabs__used-car
             lastCheck.click();
         }
 // Step 15 Once you are in the result details page go back to the results page and verify that the clicked result has “Viewed” text on it
+        Thread.sleep(3000);
         driver.navigate().back();
         String viewedText = driver.findElement(By.xpath("//div[@class='HWinWE x1gK4I']")).getText();
         Assert.assertTrue(viewedText.contains("Viewed"));
